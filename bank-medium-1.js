@@ -1,0 +1,7 @@
+export const MEDIUM_1 = [
+['MUDAH','Organisasi ATR/BPN','Motto atau nilai layanan ATR/BPN yang sering diuji adalah ...',['Melayani, Profesional, Terpercaya.','Cepat, Murah, Rahasia.','Amanah, Kompeten, Adaptif.','Tertutup, Eksklusif, Mahal.','Profit, Pasar, Promosi.'],'Materi organisasi menampilkan motto Melayani, Profesional, Terpercaya.'],
+['MUDAH','Organisasi ATR/BPN','BPN didefinisikan sebagai ...',['Lembaga Pemerintah Non Kementerian yang menyelenggarakan tugas bidang pertanahan.','Organisasi profesi PPAT.','Pengadilan pertanahan.','Bank tanah privat.','Kantor notaris nasional.'],'BPN adalah LPNK di bidang pertanahan, bukan organisasi profesi atau pengadilan.'],
+['MUDAH','Organisasi ATR/BPN','Salah satu unsur organisasi ATR/BPN terbaru adalah ...',['Direktorat Jenderal Penanganan Sengketa dan Konflik Pertanahan.','Direktorat Jenderal Pajak.','Direktorat Jenderal Imigrasi.','Mahkamah Agung.','Komisi Yudisial.'],'Permen organisasi memuat Ditjen Penanganan Sengketa dan Konflik Pertanahan.'],
+['MUDAH','Hukum Pertanahan Nasional','Pasal 33 ayat (3) UUD 1945 menegaskan bumi, air, dan kekayaan alam dikuasai negara untuk ...',['Sebesar-besar kemakmuran rakyat.','Keuntungan PPAT.','Kepentingan kreditur saja.','Penutupan kantor PPAT.','Honorarium saksi.'],'Pasal 33 ayat (3) adalah dasar konstitusional penguasaan negara untuk kemakmuran rakyat.'],
+['MUDAH','Hukum Pertanahan Nasional','UUPA adalah UU Nomor ...',['5 Tahun 1960.','24 Tahun 1997.','37 Tahun 1998.','24 Tahun 2016.','33 Tahun 2021.'],'UUPA adalah Undang-Undang Nomor 5 Tahun 1960.']
+];
