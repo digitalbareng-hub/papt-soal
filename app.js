@@ -1,9 +1,10 @@
 import { QUESTIONS, RULES } from "./questions.js";
 import { NEW_MATERIAL_QUESTIONS } from "./materials-2024.js";
+import { REGULATION_QUESTIONS } from "./materials-regulasi.js";
 
 const letters = ["A", "B", "C", "D", "E"];
 const $ = (selector) => document.querySelector(selector);
-const BANK = dedupeQuestions([...QUESTIONS, ...NEW_MATERIAL_QUESTIONS]);
+const BANK = dedupeQuestions([...QUESTIONS, ...NEW_MATERIAL_QUESTIONS, ...REGULATION_QUESTIONS]);
 
 const state = {
   mode: "tryout",
