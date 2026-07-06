@@ -1,43 +1,16 @@
-# PPAT CAT Tryout dan LMS
+# Simulasi CAT Ujian PPAT 2026
 
-Sistem latihan tryout CAT dan LMS belajar untuk persiapan ujian PPAT 2026.
+Aplikasi ini sudah direbuild dari ZIP `materi PPAT.zip` yang berisi materi organisasi ATR/BPN, hukum pertanahan nasional, hak tanah dan pendaftaran tanah, peraturan jabatan PPAT, pembuatan akta PPAT, kode etik IPPAT, PMPJ, honorarium, magang, dan pelaksanaan ujian PPAT.
 
-Aplikasi ini berupa web statis multi-file sehingga bisa langsung dijalankan di Vercel, GitHub Pages, atau server static biasa.
+## Prinsip versi ini
 
-## Fitur
-
-- Bank soal dikurasi dari bahan latihan PPAT yang diunggah: peraturan jabatan PPAT, akta PPAT, kode etik, organisasi IPPAT, hukum tanah nasional, pendaftaran tanah, pembinaan-pengawasan PPAT, PMPJ, magang, honorarium PPAT, Perkaban No. 1 Tahun 2006 jo Perkaban No. 23 Tahun 2009, PP No. 37 Tahun 1998 jo PP No. 24 Tahun 2016, Permen ATR/BPN No. 33 Tahun 2021, dan materi pelaksanaan ujian PPAT.
-- Paket tryout selalu acak dengan komposisi tetap:
-  - 20 soal Sulit
-  - 30 soal Mudah
-  - 50 soal Sangat Mudah
-- Skor berbobot:
-  - Sulit: benar +3.500000, salah -0.677777, kosong 0.
-  - Mudah: benar +2.333333, salah -0.333333, kosong 0.
-  - Sangat Mudah: benar +1.000000, salah -0.133333, kosong 0.
-- Mode `Tryout CAT`: timer, navigasi nomor soal, ragu-ragu, laporan skor, review pembahasan, export hasil JSON.
-- Mode `LMS Belajar`: pilih modul, jawab soal, langsung muncul kunci dan penjelasan mengapa jawaban benar.
-
-## Menjalankan Lokal
-
-```bash
-python3 -m http.server 5173
-```
-
-Lalu buka `http://localhost:5173`.
+- Bank soal lama tidak lagi dipakai.
+- `questions.js` hanya meneruskan data dari `bank.js`.
+- `materials-2024.js` dan `materials-regulasi.js` dikosongkan agar tidak mencampur soal lama.
+- Simulasi tetap mengikuti format CAT: 20 soal sulit, 30 soal mudah, 50 soal sangat mudah.
+- Skor mengikuti bobot: sulit +3.500000 / -0.677777, mudah +2.333333 / -0.333333, sangat mudah +1.000000 / -0.133333, kosong 0.
+- Mode LMS tetap tersedia untuk latihan per modul dan pembahasan langsung.
 
 ## Deploy Vercel
 
-1. Import repo ini di Vercel.
-2. Framework Preset: `Other`.
-3. Build Command: kosongkan.
-4. Output Directory: kosongkan atau isi `.`.
-5. Deploy.
-
-## GitHub Pages
-
-Aktifkan dari `Settings > Pages`, pilih sumber `GitHub Actions`, lalu jalankan workflow Pages.
-
-## Catatan
-
-Bank soal bawaan adalah simulasi edukatif, bukan bocoran soal resmi. Soal bisa terus dikembangkan dari hasil riset dan kisi-kisi terbaru.
+Vercel biasanya otomatis redeploy setelah push ke branch `main`. Jika belum berubah, buka dashboard Vercel lalu klik `Redeploy`.
