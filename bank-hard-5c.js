@@ -1,0 +1,3 @@
+export const HARD_5C = [
+['SULIT','Magang dan Ujian PPAT','Calon PPAT yang sudah menjabat Notaris menanyakan apakah ketentuan magang selalu identik dengan calon yang belum Notaris. Jawaban tepat adalah ...',['Status calon harus diperiksa karena materi magang membedakan kategori dan pengecualian tertentu.','Semua calon selalu identik tanpa kategori.','Notaris otomatis menjadi PPAT tanpa administrasi.','Magang hanya untuk staf kantor pertanahan.','Magang hanya berlaku setelah lulus ujian.'],'Materi magang memuat kategori calon, sehingga jawaban ujian tidak boleh menyamaratakan seluruh peserta.']
+];
