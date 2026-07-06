@@ -36,12 +36,22 @@ function shuffle(items) {
   return copy;
 }
 
+function withShuffledOptions(question) {
+  const correctOption = question.options[question.answerIndex];
+  const options = shuffle(question.options);
+  return {
+    ...question,
+    options,
+    answerIndex: options.indexOf(correctOption),
+  };
+}
+
 function buildPacket() {
   const packet = [];
   Object.entries(RULES).forEach(([category, rule]) => {
     packet.push(...shuffle(byCategory(category)).slice(0, rule.take));
   });
-  return shuffle(packet).map((question, index) => ({ ...question, id: index + 1 }));
+  return shuffle(packet).map((question, index) => ({ ...withShuffledOptions(question), id: index + 1 }));
 }
 
 function renderBankStats() {
@@ -308,7 +318,7 @@ function renderModuleStats() {
 }
 
 function loadLmsModule(moduleName) {
-  lms.questions = shuffle(QUESTIONS.filter((question) => question.module === moduleName));
+  lms.questions = shuffle(QUESTIONS.filter((question) => question.module === moduleName)).map(withShuffledOptions);
   lms.current = 0;
   lms.selected = null;
   lms.locked = false;
