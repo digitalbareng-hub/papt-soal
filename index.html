@@ -1,45 +1,161 @@
 <!doctype html>
 <html lang="id">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PPAT CAT Tryout - Bank Soal Acak</title>
-<style>
-:root{--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#68758a;--line:#dce3ee;--primary:#1769e0;--dark:#0f4faf;--green:#0b8f59;--yellow:#b7791f;--red:#c53030;--blue:#eaf2ff;--soft:#f8fafc}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{border:0;border-radius:8px;cursor:pointer;font-weight:800}.wrap{max-width:1220px;margin:auto;padding:24px}.card{background:var(--panel);border:1px solid var(--line);border-radius:8px}.hero{padding:38px}.eyebrow{margin:0 0 10px;color:var(--primary);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}h1{margin:0 0 12px;font-size:clamp(2rem,4vw,4rem);line-height:1}h2{margin:0 0 16px}.muted{color:var(--muted);line-height:1.6}.grid{display:grid;gap:16px}.setup{grid-template-columns:repeat(3,minmax(0,1fr));padding:18px;margin-top:16px}.rules,.bank{grid-template-columns:repeat(3,1fr);margin-top:16px}.rule,.bankbox{padding:16px}.rule span,.bankbox span{display:block;color:var(--muted);margin-top:5px}label{display:grid;gap:8px;color:var(--muted);font-weight:800}input{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 12px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.primary{background:var(--primary);color:white;padding:11px 16px}.primary:hover{background:var(--dark)}.ghost{background:#eef3fb;color:var(--ink);padding:11px 16px}.warn{background:#fff7df;color:var(--yellow);padding:11px 16px}.danger{background:var(--red);color:white;padding:11px 16px}.hidden{display:none!important}.head{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:16px}.timer{display:grid;gap:4px;min-width:180px;padding:16px;border-radius:8px;background:var(--ink);color:white;text-align:right}.timer span{color:#b8c4d8}.timer strong{font-size:1.55rem}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:16px;overflow:hidden}.stats div{background:white;padding:16px}.stats span{display:block;color:var(--muted);font-size:.82rem}.stats strong{font-size:1.25rem}.exam{display:grid;grid-template-columns:330px 1fr;gap:16px}.nav,.panel{padding:18px}.navtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-height:610px;overflow:auto}.num{min-height:42px;background:#f0f4fa;color:var(--ink);border:2px solid transparent}.num.active{border-color:var(--primary);background:var(--blue)}.num.answered{background:#eaf8f1;color:var(--green)}.num.flagged{background:#fff7df;color:var(--yellow)}.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-weight:800}.pill{display:inline-flex;align-items:center;min-height:28px;padding:3px 10px;border-radius:999px;background:var(--blue);color:var(--primary)}#qtext{margin:22px 0;font-size:1.45rem;line-height:1.35}.opts{display:grid;gap:12px}.opt{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);text-align:left;font-weight:650}.opt:hover,.opt.sel{border-color:var(--primary);background:var(--blue)}.key{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#eef3fb}.foot{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:16px;padding:16px}.report{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}.report .card{padding:18px}.metric{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.metric div{background:var(--soft);border-radius:8px;padding:10px}.metric span{display:block;color:var(--muted);font-size:.78rem}.review{display:grid;gap:12px;margin-top:16px;padding:18px}.review article{border:1px solid var(--line);border-radius:8px;padding:14px}.correct{background:#eaf8f1}.wrong{background:#fff0f0}@media(max-width:900px){.wrap{padding:14px}.setup,.rules,.bank,.stats,.exam,.report{grid-template-columns:1fr}.head,.foot{align-items:stretch;flex-direction:column}.timer{text-align:left}.numbers{grid-template-columns:repeat(8,1fr);max-height:240px}}@media(max-width:560px){.hero,.nav,.panel{padding:16px}.numbers{grid-template-columns:repeat(5,1fr)}}
-</style>
-</head>
-<body>
-<main class="wrap">
-<section id="start">
-<div class="card hero"><p class="eyebrow">Bank Soal CAT PPAT 2026</p><h1>Tryout Acak dari Bank Soal</h1><p class="muted">Setiap mulai tryout atau refresh halaman, sistem mengambil paket 100 soal secara acak dari bank soal. Komposisi tetap mengikuti bobot ujian: 20 sulit, 30 mudah, 50 sangat mudah.</p></div>
-<div class="card grid setup"><label>Nama peserta<input id="name" placeholder="Contoh: Peserta Tryout"></label><label>Durasi ujian (menit)<input id="duration" type="number" min="10" max="240" value="120"></label><div class="row"><button class="primary" id="begin">Mulai Paket Acak</button><button class="ghost" id="previewSet">Acak Ulang Paket</button></div></div>
-<div class="grid bank"><div class="card bankbox"><strong id="bankHard">0 soal sulit</strong><span>Diambil acak 20 soal</span></div><div class="card bankbox"><strong id="bankEasy">0 soal mudah</strong><span>Diambil acak 30 soal</span></div><div class="card bankbox"><strong id="bankBasic">0 soal sangat mudah</strong><span>Diambil acak 50 soal</span></div></div>
-<div class="grid rules"><div class="card rule"><strong>Sulit</strong><span>Benar +3.500000</span><span>Salah -0.677777</span><span>Kosong 0</span></div><div class="card rule"><strong>Mudah</strong><span>Benar +2.333333</span><span>Salah -0.333333</span><span>Kosong 0</span></div><div class="card rule"><strong>Sangat Mudah</strong><span>Benar +1.000000</span><span>Salah -0.133333</span><span>Kosong 0</span></div></div>
-</section>
-<section id="exam" class="hidden"><header class="head"><div><p class="eyebrow" id="who">Peserta</p><h2>Computer Assisted Test PPAT</h2></div><div class="timer"><span>Sisa waktu</span><strong id="timer">00:00:00</strong></div></header><section class="card stats"><div><span>Dijawab</span><strong id="answered">0/100</strong></div><div><span>Ragu-ragu</span><strong id="marked">0</strong></div><div><span>Kosong</span><strong id="blank">100</strong></div><div><span>Nilai maksimal</span><strong id="maxscore">189.999990</strong></div></section><div class="exam"><aside class="card nav"><div class="navtop"><strong>Nomor Soal</strong><button class="ghost" id="clear">Kosongkan</button></div><div class="numbers" id="numbers"></div></aside><section class="card panel"><div class="meta"><span id="qnum">Soal 1</span><span class="pill" id="cat">Sangat Mudah</span><span id="topic">Topik</span></div><div id="qtext"></div><div class="opts" id="opts"></div><div class="foot"><button class="ghost" id="prev">Sebelumnya</button><button class="warn" id="flag">Tandai Ragu</button><button class="primary" id="next">Berikutnya</button></div></section></div><footer class="card foot"><p class="muted">Jawaban kosong bernilai 0. Paket soal diacak dari bank soal saat tryout dimulai.</p><button class="danger" id="submit">Submit Tryout</button></footer></section>
-<section id="result" class="hidden"><div class="card hero"><p class="eyebrow">Hasil Tryout</p><h1 id="score">0.000000</h1><p class="muted" id="summary"></p><div class="row"><button class="primary" id="showReview">Review Pembahasan</button><button class="ghost" id="export">Export Hasil</button><button class="ghost" id="restart">Paket Acak Baru</button></div></div><div class="report" id="report"></div><div class="card review hidden" id="review"></div></section>
-</main>
-<script>
-const RULES={SULIT:{label:"Sulit",correct:3.5,wrong:-0.677777,blank:0,take:20},MUDAH:{label:"Mudah",correct:2.333333,wrong:-0.333333,blank:0,take:30},SANGAT_MUDAH:{label:"Sangat Mudah",correct:1,wrong:-0.133333,blank:0,take:50}};
-const BANK={SULIT:["peralihan hak karena waris","jual beli tanah yang dibebani hak tanggungan","validasi pajak transaksi","kapasitas pihak di bawah pengampuan","kuasa menjual mutlak","tanah belum terdaftar","konflik kepentingan PPAT","sengketa batas tanah","harta bersama perkawinan","pembatalan akta","warkah dan arsip PPAT","kewenangan wilayah kerja PPAT","akta hibah keluarga","akta pembagian hak bersama","dokumen identitas diduga palsu","pendaftaran peralihan hak","subjek pemegang Hak Milik","roya hak tanggungan","pemeriksaan sertipikat","perbuatan hukum pertanahan","jual beli oleh ahli waris belum balik nama","tanah dalam blokir atau sita","perbedaan luas fisik dan yuridis","sertipikat pengganti karena hilang","peralihan sebagian bidang tanah","pemecahan sertipikat sebelum jual beli","peralihan HGB yang hampir berakhir","peralihan hak kepada badan hukum","pembebanan hak tanggungan peringkat kedua","SKMHT yang melewati batas waktu","jual beli dengan kuasa dari luar negeri","dokumen perkawinan campuran","akta inbreng tanah ke perseroan","transaksi dengan pihak lanjut usia rentan","tanah ulayat atau tanah adat","objek berada pada rencana pengadaan tanah","perbedaan nama pada sertipikat dan KTP","akta tukar menukar tidak seimbang","pembayaran transaksi belum lunas","penolakan validasi BPHTB","larangan pemilikan tanah absentee","jual beli tanah pertanian","peralihan tanah hasil lelang","pembetulan akta setelah tanda tangan","indikasi nominee agreement"],MUDAH:["pengertian PPAT","Akta Jual Beli","sertipikat tanah","Hak Milik","identitas para pihak","BPHTB","PPh pengalihan","saksi akta","hak tanggungan","roya","balik nama","akta hibah","dokumen waris","objek akta","domisili pihak","minuta akta","salinan akta","kantor pertanahan","cek sertipikat","surat kuasa","pajak daerah","syarat pembeli","tanah sengketa","harga transaksi","nomor akta","kehadiran pihak","penguasaan fisik","luas tanah","netralitas PPAT","akta tukar menukar","akta pemasukan ke perusahaan","akta pemberian HGB di atas Hak Milik","pendaftaran pertama kali","surat ukur","gambar situasi","NIB bidang tanah","validasi sertipikat elektronik","pembacaan akta","penandatanganan akta","sidik jari atau cap jempol","pencatatan buku daftar akta","pelaporan akta","pemeriksaan pajak","NJOP","nilai transaksi","hak pakai","hak guna bangunan","hak guna usaha","tanah wakaf","akta ikrar wakaf","sertipikat induk","pemecahan bidang","penggabungan bidang","pemisahan bidang","pembeli WNI","pembeli badan hukum Indonesia","kewajiban menyampaikan berkas","akta pemberian kuasa membebankan hak tanggungan","perjanjian pengikatan jual beli","pengosongan objek"],SANGAT_MUDAH:["kepanjangan PPAT","kepanjangan AJB","kepanjangan BPHTB","kepanjangan PPh","fungsi KTP","fungsi KK","fungsi NPWP","sertipikat","tanah dan bangunan","pihak pembeli","hibah","waris","tanda tangan akta","pembahasan tryout","instansi pertanahan","kepatuhan hukum","sikap netral","kehati-hatian","dokumen palsu","nomor sertipikat","nama pemegang hak","luas tanah","pajak transaksi","pembayar BPHTB","nilai transaksi","surat kuasa","batas kuasa","ahli waris","pewaris","hak atas tanah","Hak Pakai","HGB","HGU","jaminan bank","roya jaminan","arsip akta","nomor soal CAT","jawaban kosong","penalti salah","arti CAT","timer CAT","tombol ragu-ragu","hasil submit","objek tanah","batas bidang","alamat objek","penjual","pembeli","saksi","akta PPAT","Kementerian ATR/BPN","kantor pertanahan","akta autentik","peralihan hak","pembebanan hak","pendaftaran tanah","dokumen identitas","KTP elektronik","kartu keluarga","sertipikat elektronik","meter persegi","nomor hak","desa kelurahan","kecamatan","kota kabupaten","provinsi","tanggal akta","nomor akta","nama lengkap","tempat lahir","tanggal lahir","status perkawinan","pekerjaan pihak","alamat pihak","uang panjar","pelunasan","pajak penjual","pajak pembeli","legalitas objek","legalitas subjek","fotokopi dokumen","dokumen asli","materai","cap kantor","buku tanah","surat ukur","data fisik","data yuridis","hak milik","hak tanggungan","akta hibah","akta waris","akta jual beli","akta tukar menukar","komputer assisted test"]};
-const $=s=>document.querySelector(s),letters=["A","B","C","D","E"];let qs=[],ans=[],flags=[],cur=0,left=0,tick=null,started=null,result=null,participant="Peserta Tryout";
-function makeQ(category,topic){if(category==="SULIT")return{category,topic,question:`Dalam praktik PPAT, perkara terkait ${topic} muncul sebelum akta ditandatangani. Sikap paling tepat adalah ...`,options:["Menunda atau melanjutkan setelah kewenangan, status objek, dan dokumen pendukung jelas","Tetap membuat akta karena para pihak sudah datang","Mengosongkan bagian yang bermasalah dalam akta","Meminta salah satu pihak menanggung seluruh risiko tanpa pemeriksaan"],answerIndex:0,explanation:`Pada isu ${topic}, PPAT perlu menerapkan prinsip kehati-hatian, memeriksa kewenangan pihak, status objek, dan kelengkapan dokumen sebelum akta dibuat.`};if(category==="MUDAH")return{category,topic,question:`Pernyataan yang paling tepat mengenai ${topic} dalam pekerjaan PPAT adalah ...`,options:["Harus diperiksa dan dicatat sesuai ketentuan agar akta serta proses pendaftaran tidak bermasalah","Tidak perlu diperhatikan jika para pihak sudah sepakat","Cukup diganti dengan keterangan lisan tanpa dokumen","Hanya penting setelah seluruh proses selesai"],answerIndex:0,explanation:`Materi ${topic} termasuk bagian dasar yang perlu dipahami karena berpengaruh pada legalitas akta dan proses administrasi pertanahan.`};return{category,topic,question:`Dalam konteks PPAT, ${topic} berkaitan paling dekat dengan ...`,options:["administrasi dan perbuatan hukum pertanahan","penerbitan paspor","perizinan kendaraan bermotor","pelayanan kesehatan umum"],answerIndex:0,explanation:`Istilah ${topic} berada dalam ruang lingkup pertanahan, akta, pajak transaksi, atau administrasi yang lazim ditemui dalam pekerjaan PPAT.`}}
-function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function buildPacket(){let packet=[];Object.keys(RULES).forEach(cat=>{let topics=shuffle(BANK[cat]).slice(0,RULES[cat].take);packet.push(...topics.map(t=>makeQ(cat,t)))});return shuffle(packet).map((q,i)=>({...q,id:i+1}))}
-function refreshBankStats(){$("#bankHard").textContent=`${BANK.SULIT.length} soal sulit`;$("#bankEasy").textContent=`${BANK.MUDAH.length} soal mudah`;$("#bankBasic").textContent=`${BANK.SANGAT_MUDAH.length} soal sangat mudah`}
-function start(){participant=$("#name").value.trim()||"Peserta Tryout";qs=buildPacket();ans=Array(qs.length).fill(null);flags=Array(qs.length).fill(false);cur=0;left=Math.min(Math.max(Number($("#duration").value)||120,10),240)*60;started=new Date();$("#who").textContent=participant;$("#maxscore").textContent=maxScore().toFixed(6);$("#start").classList.add("hidden");$("#result").classList.add("hidden");$("#exam").classList.remove("hidden");buildNav();render();progress();clearInterval(tick);clock();tick=setInterval(()=>{left--;clock();if(left<=0)finish()},1000)}
-function clock(){let s=Math.max(left,0),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;$("#timer").textContent=[h,m,x].map(v=>String(v).padStart(2,"0")).join(":")}
-function buildNav(){$("#numbers").innerHTML="";qs.forEach((_,i)=>{let b=document.createElement("button");b.className="num";b.textContent=i+1;b.onclick=()=>{cur=i;render()};$("#numbers").append(b)})}
-function render(){let q=qs[cur],r=RULES[q.category];$("#qnum").textContent=`Soal ${cur+1} dari ${qs.length}`;$("#cat").textContent=r.label;$("#topic").textContent=q.topic;$("#qtext").textContent=q.question;$("#opts").innerHTML="";q.options.forEach((o,i)=>{let b=document.createElement("button");b.className="opt"+(ans[cur]===i?" sel":"");b.innerHTML=`<span class="key">${letters[i]}</span><span>${esc(o)}</span>`;b.onclick=()=>{ans[cur]=i;render();progress()};$("#opts").append(b)});$("#prev").disabled=cur===0;$("#next").disabled=cur===qs.length-1;$("#flag").textContent=flags[cur]?"Hapus Ragu":"Tandai Ragu";navState()}
-function navState(){[...$("#numbers").children].forEach((b,i)=>{b.className="num"+(i===cur?" active":"")+(ans[i]!==null?" answered":"")+(flags[i]?" flagged":"")})}
-function progress(){let a=ans.filter(x=>x!==null).length,f=flags.filter(Boolean).length;$("#answered").textContent=`${a}/${qs.length}`;$("#marked").textContent=f;$("#blank").textContent=qs.length-a;navState()}
-function maxScore(){return qs.reduce((s,q)=>s+RULES[q.category].correct,0)}
-function calc(){let details=qs.map((q,i)=>{let selected=ans[i],status=selected===null?"blank":selected===q.answerIndex?"correct":"wrong",rule=RULES[q.category],score=status==="blank"?0:status==="correct"?rule.correct:rule.wrong;return{index:i,question:q,selected,status,score}}),stats={};Object.keys(RULES).forEach(k=>stats[k]={total:0,correct:0,wrong:0,blank:0,score:0,max:0});details.forEach(d=>{let s=stats[d.question.category];s.total++;s[d.status]++;s.score+=d.score;s.max+=RULES[d.question.category].correct});return{participant,startedAt:started.toISOString(),finishedAt:new Date().toISOString(),totalScore:details.reduce((s,d)=>s+d.score,0),maxScore:maxScore(),answered:ans.filter(x=>x!==null).length,blank:ans.filter(x=>x===null).length,flagged:flags.filter(Boolean).length,categoryStats:stats,details}}
-function finish(){clearInterval(tick);result=calc();$("#exam").classList.add("hidden");$("#result").classList.remove("hidden");$("#score").textContent=result.totalScore.toFixed(6);$("#summary").textContent=`${participant} menjawab ${result.answered} dari ${qs.length} soal. Nilai maksimal simulasi ini ${result.maxScore.toFixed(6)}.`;report();review()}
-function report(){$("#report").innerHTML="";Object.entries(RULES).forEach(([k,r])=>{let s=result.categoryStats[k],c=document.createElement("div");c.className="card";c.innerHTML=`<h2>${r.label}</h2><div class="metric"><div><span>Jumlah</span><strong>${s.total}</strong></div><div><span>Skor</span><strong>${s.score.toFixed(6)}</strong></div><div><span>Benar</span><strong>${s.correct}</strong></div><div><span>Salah</span><strong>${s.wrong}</strong></div><div><span>Kosong</span><strong>${s.blank}</strong></div><div><span>Maksimal</span><strong>${s.max.toFixed(6)}</strong></div></div>`;$("#report").append(c)})}
-function review(){$("#review").innerHTML="";result.details.forEach(d=>{let q=d.question,sel=d.selected===null?"Tidak dijawab":`${letters[d.selected]}. ${q.options[d.selected]}`,key=`${letters[q.answerIndex]}. ${q.options[q.answerIndex]}`,a=document.createElement("article");a.className=d.status==="correct"?"correct":d.status==="wrong"?"wrong":"";a.innerHTML=`<h3>${d.index+1}. ${esc(q.question)}</h3><p class="muted">Kategori: ${RULES[q.category].label} | Topik: ${esc(q.topic)} | Skor: ${d.score.toFixed(6)}</p><p><strong>Jawaban Anda:</strong> ${esc(sel)}</p><p><strong>Kunci:</strong> ${esc(key)}</p><p><strong>Pembahasan:</strong> ${esc(q.explanation)}</p>`;$("#review").append(a)})}
-function esc(v){return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
-$("#begin").onclick=start;$("#previewSet").onclick=()=>{qs=buildPacket();alert(`Paket acak siap: ${qs.length} soal. Klik Mulai Paket Acak untuk mengerjakan.`)};$("#prev").onclick=()=>{cur=Math.max(cur-1,0);render()};$("#next").onclick=()=>{cur=Math.min(cur+1,qs.length-1);render()};$("#flag").onclick=()=>{flags[cur]=!flags[cur];render();progress()};$("#clear").onclick=()=>{ans[cur]=null;render();progress()};$("#submit").onclick=()=>{let b=ans.filter(x=>x===null).length;if(confirm(b?`Masih ada ${b} soal kosong. Submit sekarang?`:"Submit tryout sekarang?"))finish()};$("#showReview").onclick=()=>{$("#review").classList.toggle("hidden");$("#showReview").textContent=$("#review").classList.contains("hidden")?"Review Pembahasan":"Sembunyikan Review"};$("#restart").onclick=()=>{clearInterval(tick);$("#result").classList.add("hidden");$("#exam").classList.add("hidden");$("#start").classList.remove("hidden")};$("#export").onclick=()=>{let blob=new Blob([JSON.stringify(result,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=`hasil-tryout-ppat-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url)};refreshBankStats();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PPAT CAT Tryout dan LMS</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Bank Soal PPAT 2026</p>
+        <h1>Tryout CAT dan LMS Belajar</h1>
+        <p>
+          Bank soal dikurasi dari bahan latihan PPAT, peraturan jabatan, akta PPAT, kode etik,
+          organisasi IPPAT, dan contoh pembahasan. Mode tryout meniru CAT, sedangkan mode LMS
+          memberi penjelasan langsung setelah menjawab.
+        </p>
+      </section>
+
+      <nav class="tabs" aria-label="Mode aplikasi">
+        <button id="tabTryout" class="tab active">Tryout CAT</button>
+        <button id="tabLms" class="tab">LMS Belajar</button>
+      </nav>
+
+      <section id="tryoutView">
+        <section id="startPanel" class="card start-grid">
+          <label>
+            Nama peserta
+            <input id="candidateName" placeholder="Contoh: Peserta Tryout" />
+          </label>
+          <label>
+            Durasi ujian (menit)
+            <input id="durationInput" type="number" min="10" max="240" value="120" />
+          </label>
+          <div class="start-actions">
+            <button id="startExam" class="primary">Mulai Paket Acak</button>
+            <button id="reshufflePreview" class="secondary">Acak Ulang Paket</button>
+          </div>
+        </section>
+
+        <section class="bank-grid">
+          <article class="card mini">
+            <strong id="hardBank">0</strong>
+            <span>Bank soal sulit, diambil 20</span>
+          </article>
+          <article class="card mini">
+            <strong id="mediumBank">0</strong>
+            <span>Bank soal mudah, diambil 30</span>
+          </article>
+          <article class="card mini">
+            <strong id="basicBank">0</strong>
+            <span>Bank soal sangat mudah, diambil 50</span>
+          </article>
+        </section>
+
+        <section id="examPanel" class="hidden">
+          <header class="exam-header">
+            <div>
+              <p id="participantLabel" class="eyebrow">Peserta</p>
+              <h2>Computer Assisted Test PPAT</h2>
+            </div>
+            <div class="timer">
+              <span>Sisa waktu</span>
+              <strong id="timer">00:00:00</strong>
+            </div>
+          </header>
+
+          <section class="card stats">
+            <div><span>Dijawab</span><strong id="answeredCount">0/100</strong></div>
+            <div><span>Ragu-ragu</span><strong id="flaggedCount">0</strong></div>
+            <div><span>Kosong</span><strong id="blankCount">100</strong></div>
+            <div><span>Maksimal</span><strong id="maxScore">189.999990</strong></div>
+          </section>
+
+          <section class="exam-grid">
+            <aside class="card nav-panel">
+              <div class="nav-top">
+                <strong>Nomor Soal</strong>
+                <button id="clearAnswer" class="secondary small">Kosongkan</button>
+              </div>
+              <div id="numberGrid" class="number-grid"></div>
+            </aside>
+
+            <article class="card question-panel">
+              <div class="meta">
+                <span id="questionNumber">Soal 1</span>
+                <span id="questionCategory" class="pill">Kategori</span>
+                <span id="questionModule">Modul</span>
+              </div>
+              <h2 id="questionText"></h2>
+              <div id="optionList" class="options"></div>
+              <div class="question-actions">
+                <button id="prevQuestion" class="secondary">Sebelumnya</button>
+                <button id="flagQuestion" class="warning">Tandai Ragu</button>
+                <button id="nextQuestion" class="primary">Berikutnya</button>
+              </div>
+            </article>
+          </section>
+
+          <footer class="card footer">
+            <p>Jawaban kosong bernilai 0. Paket soal diambil acak dari bank soal setiap sesi.</p>
+            <button id="submitExam" class="danger">Submit Tryout</button>
+          </footer>
+        </section>
+
+        <section id="resultPanel" class="hidden">
+          <div class="card result-hero">
+            <p class="eyebrow">Hasil Tryout</p>
+            <h2 id="scoreTotal">0.000000</h2>
+            <p id="resultSummary"></p>
+            <div class="actions">
+              <button id="reviewToggle" class="primary">Review Pembahasan</button>
+              <button id="exportResult" class="secondary">Export Hasil</button>
+              <button id="newExam" class="secondary">Paket Acak Baru</button>
+            </div>
+          </div>
+          <div id="categoryReport" class="report-grid"></div>
+          <div id="reviewPanel" class="card review hidden"></div>
+        </section>
+      </section>
+
+      <section id="lmsView" class="hidden">
+        <section class="card lms-intro">
+          <div>
+            <p class="eyebrow">Mode LMS</p>
+            <h2>Belajar per modul, jawab, langsung paham alasannya</h2>
+            <p>
+              Pilih modul, jawab satu per satu, lalu aplikasi langsung menampilkan kunci dan
+              alasan hukum/praktiknya. Mode ini cocok untuk menguatkan konsep sebelum tryout.
+            </p>
+          </div>
+          <label>
+            Modul belajar
+            <select id="moduleSelect"></select>
+          </label>
+        </section>
+
+        <section class="lms-layout">
+          <aside class="card module-list" id="moduleStats"></aside>
+          <article class="card lms-card">
+            <div class="meta">
+              <span id="lmsProgress">1/1</span>
+              <span id="lmsCategory" class="pill">Kategori</span>
+              <span id="lmsModule">Modul</span>
+            </div>
+            <h2 id="lmsQuestion"></h2>
+            <div id="lmsOptions" class="options"></div>
+            <div id="lmsFeedback" class="feedback hidden"></div>
+            <div class="question-actions">
+              <button id="lmsPrev" class="secondary">Sebelumnya</button>
+              <button id="lmsNext" class="primary">Berikutnya</button>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
 </html>
