@@ -6,7 +6,7 @@ Aplikasi ini berupa web statis multi-file sehingga bisa langsung dijalankan di V
 
 ## Fitur
 
-- Bank soal dikurasi dari bahan latihan PPAT yang diunggah: peraturan jabatan PPAT, akta PPAT, kode etik, organisasi IPPAT, dan contoh pembahasan.
+- Bank soal dikurasi dari bahan latihan PPAT yang diunggah: peraturan jabatan PPAT, akta PPAT, kode etik, organisasi IPPAT, hukum tanah nasional, pendaftaran tanah, pembinaan-pengawasan PPAT, PMPJ, magang, honorarium PPAT, Perkaban No. 1 Tahun 2006 jo Perkaban No. 23 Tahun 2009, PP No. 37 Tahun 1998 jo PP No. 24 Tahun 2016, Permen ATR/BPN No. 33 Tahun 2021, dan materi pelaksanaan ujian PPAT.
 - Paket tryout selalu acak dengan komposisi tetap:
   - 20 soal Sulit
   - 30 soal Mudah
