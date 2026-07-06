@@ -1,7 +1,9 @@
 import { QUESTIONS, RULES } from "./questions.js";
+import { NEW_MATERIAL_QUESTIONS } from "./materials-2024.js";
 
 const letters = ["A", "B", "C", "D", "E"];
 const $ = (selector) => document.querySelector(selector);
+const BANK = dedupeQuestions([...QUESTIONS, ...NEW_MATERIAL_QUESTIONS]);
 
 const state = {
   mode: "tryout",
@@ -23,8 +25,18 @@ const lms = {
   locked: false,
 };
 
+function dedupeQuestions(questions) {
+  const seen = new Set();
+  return questions.filter((question) => {
+    const key = question.question.trim().toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function byCategory(category) {
-  return QUESTIONS.filter((question) => question.category === category);
+  return BANK.filter((question) => question.category === category);
 }
 
 function shuffle(items) {
@@ -296,7 +308,7 @@ function exportResult() {
 }
 
 function moduleNames() {
-  return [...new Set(QUESTIONS.map((question) => question.module))].sort((a, b) => a.localeCompare(b));
+  return [...new Set(BANK.map((question) => question.module))].sort((a, b) => a.localeCompare(b));
 }
 
 function initLms() {
@@ -309,7 +321,7 @@ function initLms() {
 function renderModuleStats() {
   $("#moduleStats").innerHTML = "";
   moduleNames().forEach((name) => {
-    const count = QUESTIONS.filter((question) => question.module === name).length;
+    const count = BANK.filter((question) => question.module === name).length;
     const item = document.createElement("div");
     item.className = "module-stat";
     item.innerHTML = `<strong>${escapeHtml(name)}</strong><span>${count} soal belajar</span>`;
@@ -318,7 +330,7 @@ function renderModuleStats() {
 }
 
 function loadLmsModule(moduleName) {
-  lms.questions = shuffle(QUESTIONS.filter((question) => question.module === moduleName)).map(withShuffledOptions);
+  lms.questions = shuffle(BANK.filter((question) => question.module === moduleName)).map(withShuffledOptions);
   lms.current = 0;
   lms.selected = null;
   lms.locked = false;
